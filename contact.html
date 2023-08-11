@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuja Pawar - CSE Student</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/intro.html">About Me</a></li>
+                    <li><a href="/exp.html">Experience</a></li>
+                    <li><a href="/project.html">Projects</a></li>
+                    <li><a href="/contact.html">Contact Me</a></li>
+                    <!-- <div class="toggle-btn" id="b">
+                        <span id="bText">Dark</span>
+                        <img src="imgs/ham.png" id="btIcon">
+                    </div> -->
+                </ul>
+
+                <!-- <img src="imgs/A.jfif" id="icon"></ul> -->
+            </nav>
+        </div>
+
+        <div class="main">
+            <!-- <div class="hamburger">
+                <img class="ham" src="imgs/ham.png" alt="" width="33">
+                <img class="cross" src="imgs/cross.png" alt="" width="19" style="margin-top:-200%">
+            </div> -->
+            <!-- <a href="/cv.txt" target="_blank">
+                <button>Download CV</button></a>
+            <a href="/contact.html"><button>Contact me</button></a> -->
+
+            <div class="contactform">
+                <small>Contact me</small><br>
+
+                <form>
+                    <div class="mb-3">
+
+                        <input type="text" id="name" placeholder="Your Name" required><br>
+
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" id="email" placeholder="Email" required><br>
+
+                        <div id="emailHelp" class="form-text">We'll never share your email and phone with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" id="phone" placeholder="Phone" required><br>
+
+                    </div>
+                    <div class="mb-3" id="form-check">
+                        <input type="text" id="message" placeholder="Message" required><br>
+                    </div>
+
+                    <input type="button" class="bt bt-sm" value="Submit" onclick="Submit()">
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        function Submit() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var message = document.getElementById("message").value;
+
+            var body = "Name: " + name + "<br/> Email: " + email + "<br/> Phone: " + phone + "<br/> Message: " + message;
+            console.log(body);
+            Email.send({
+                SecureToken: "skjdhwueoy283rowhekjwk3",
+                To: 'khushikamr@gmail.com',
+                From: "maniakumar@gmail.com",
+                Subject: name,
+                Body: body
+                    // Body: "Name: " + document.getElementById("name").value + "<br> Email: " + document.getElementById("email").value + "<br> phone: " + document.getElementById("phone").value + "<br> msg: " + document.getElementById("msg").value
+            }).then(
+                message => {
+                    // $("#submit").click(function() {
+                    //     var name = $("#name").val();
+                    //     var email = $("#email").val();
+                    //     var phone = $("#phone").val();
+                    //     var message = $("#message").val();
+
+                    if (name == '' || email == '' || phone == '' || message == '') {
+                        swal({
+                            title: "Fields Empty!!",
+                            text: "Please check the missing field!!",
+                            icon: "warning",
+                            button: "Ok",
+                        });
+                    } else {
+                        swal({
+                            title: "Successfully submitted!!",
+                            text: "Data received!!",
+                            icon: "success",
+                            button: "Ok",
+                        });
+                    }
+                    // });
+
+                    //     swal("Successfull", "Your data successfully received!", "success");
+                    // } else {
+                    //     swal("Something wrong!", "Your data not received!", "error");
+                    // }
+                }
+            );
+        }
+    </script>
+
+</body>
+
+</html>
